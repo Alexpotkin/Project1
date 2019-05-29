@@ -30,8 +30,8 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
 
 gulp.task('scripts', function() {
 	return gulp.src([ // Берем все необходимые библиотеки
-		'app/libs/jquery/dist/jquery.min.js', // Берем jQuery
-		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Берем Magnific Popup
+		'app/libs/jquery/jquery.min.js', // Берем jQuery
+		'app/libs/magnific-popup/jquery.magnific-popup.min.js' // Берем Magnific Popup
 		])
 		.pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(uglify()) // Сжимаем JS файл
@@ -95,5 +95,5 @@ gulp.task('watch', function() {
 	gulp.watch('app/*.html', gulp.parallel('code')); // Наблюдение за HTML файлами в корне проекта
 	gulp.watch(['app/js/common.js', 'app/libs/**/*.js'], gulp.parallel('scripts')); // Наблюдение за главным JS файлом и за библиотеками
 });
-gulp.task('default', gulp.parallel('sass','css-libs', 'scripts', 'browser-sync', 'watch'));
-gulp.task('build', gulp.parallel('prebuild', 'clean', 'img', 'sass', 'scripts'));
+gulp.task('default', gulp.series('sass', 'css-libs', 'scripts', 'browser-sync', 'watch'));
+gulp.task('build', gulp.series('prebuild', 'clean', 'img', 'sass', 'scripts'));
