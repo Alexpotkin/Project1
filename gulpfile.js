@@ -23,7 +23,7 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('app/css'))
 		.pipe(browserSync.reload({stream: true}))
 });
-gulp.task('scripts', function() {
+gulp.task('js_libs', function() {
 	return gulp.src(js_libs)
 		.pipe(concat('libs.min.js'))
 		.pipe(uglify())
@@ -32,7 +32,7 @@ gulp.task('scripts', function() {
 
 
 
-gulp.task('browser-sync', function() {
+gulp.task('browser_sync', function() {
 	browserSync({
 		server: {
 			baseDir: 'app'
@@ -40,14 +40,14 @@ gulp.task('browser-sync', function() {
 		notify: false
 	});
 });
-gulp.task('code', function() {
+gulp.task('reload_html', function() {
 	return gulp.src('app/*.html')
 	.pipe(browserSync.reload({ stream: true }))
 });
 
 
 
-gulp.task('clean', async function() {
+gulp.task('del_build', async function() {
 	return del.sync('dist');
 });
 gulp.task('img', function() {
@@ -61,7 +61,7 @@ gulp.task('img', function() {
 		}))/**/)
 		.pipe(gulp.dest('dist/img'));
 });
-gulp.task('css-libs', function() {
+gulp.task('css_libs', function() {
 	return gulp.src('app/css/libs.css')
 		.pipe(cssnano())
 		.pipe(rename({suffix: '.min'}))
@@ -81,7 +81,7 @@ gulp.task('prebuild', async function() {
 	.pipe(gulp.dest('dist'));
 });
 
-gulp.task('clear', function (callback) {
+gulp.task('clear_cache', function (callback) {
 	return cache.clearAll();
 })
 
@@ -89,8 +89,8 @@ gulp.task('clear', function (callback) {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
-	gulp.watch('app/*.html', gulp.parallel('code'));
-	gulp.watch(['app/js/common.js', 'app/libs/**/*.js'], gulp.parallel('scripts'));
+	gulp.watch('app/*.html', gulp.parallel('reload_html'));
+	gulp.watch(['app/js/common.js', 'app/libs/**/*.js'], gulp.parallel('js_libs'));
 });
-gulp.task('default', gulp.parallel('sass', 'scripts', 'browser-sync', 'watch'));
-gulp.task('build', gulp.series('sass', 'scripts', 'clean', 'css-libs', 'prebuild', 'img'));
+gulp.task('default', gulp.parallel('sass', 'js_libs', 'browser_sync', 'watch'));
+gulp.task('build', gulp.series('sass', 'js_libs', 'del_build', 'css_libs', 'prebuild', 'img'));
