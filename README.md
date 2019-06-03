@@ -6,4 +6,4 @@
 4. Перейдите в созданную папку с проектом: cd NameNewProject
 5. Удалите ссылку на наш репозиторий: git remote rm origin
 6. Добавьте свой репозиторий: git remote add origin https://github.com/%username%/NameFirstProject.git
-7. git push -u FirstProject master
+7. git push -u origin master
