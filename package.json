@@ -1,7 +1,7 @@
 {
   "name": "firstprojectgulp",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Создайте пустой репозиторий NameNewProject на Github.com\r 2. На своем ПК откройте папку с проектами, и удерживая Shift, правой клавишей мыши вызовите меню, выберите Открыть окно команд (в Windows 7) или PowerShell (в Windows 10)\r 3. Клонируйте репозиторий: git clone https://github.com/Alexpotkin/GulpTemplate.git NameNewProject\r 4. Перейдите в созданную папку с проектом: cd NameNewProject\r 5. Удалите ссылку на наш репозиторий: git remote rm origin\r 6. Добавьте свой репозиторий: git remote add origin https://github.com/%username%/NameFirstProject.git\r 7. git push -u origin master",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,5 +24,16 @@
   },
   "dependencies": {
     "normalize-scss": "^7.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexpotkin/Project1.git"
+  },
+  "keywords": [
+    "7r8JaDlPr=@reW=e5plw7r8JaDlPr=@reW=e5plw"
+  ],
+  "bugs": {
+    "url": "https://github.com/Alexpotkin/Project1/issues"
+  },
+  "homepage": "https://github.com/Alexpotkin/Project1#readme"
 }
