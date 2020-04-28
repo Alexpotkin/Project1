@@ -23,6 +23,7 @@
     "imagemin-pngquant": "^7.0.0"
   },
   "dependencies": {
+    "gulp-install": "^1.1.0",
     "normalize-scss": "^7.0.1"
   },
   "repository": {
